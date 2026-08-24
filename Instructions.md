@@ -49,8 +49,8 @@ Finally, we want to automate the job so it can be run from a pipeline tool, such
 In order to automate the build of an application, we need to build it manually first.  Our application has 2 parts, a COBOL file, which has dependencies on COPYBOOKS.  And it also has an LNK file.  We must build each of those manually to ensure we don't have any errors.
 
 - Run the following commands and ensure we get a 0000 return code:
-  - `zowe endevor generate DOGGOS17 --type COBOL --os --maxrc 0 --sn 1 --cb`
-  - `zowe endevor generate DOGGOS17 --type LNK --os --maxrc 0 --sn 1 --cb`
+  - `zowe endevor generate element DOGGOS17 --type COBOL --os --maxrc 0 --sn 1 --cb`
+  - `zowe endevor generate element DOGGOS17 --type LNK --os --maxrc 0 --sn 1 --cb`
 
 - This command uses Zowe to interact with Endevor.  We pass the command, `generate` and it takes an element name as a parameter.  
 - We pass the following options:
@@ -214,7 +214,7 @@ We can now build one or more components with a single command.  And each command
 
 ## 16. Let's run the application
 Last time we ran the application, in the command line we executed:
-`zowe jobs submit data-set "CUST017.MARBLES.JCL(MARBCOPY)" --vasc`
+`zowe jobs submit data-set "CUST017.PUBLIC.JCL(NDRUNDOG)" --vasc`
 
 But now we have a function to download the job, capture output values and retun information to us called `submitJobAndDownloadOutput`.   We call this from the Duty Run command.
   - It uses a function, submitJobAndDownloadOutput(...) to submit the job, check the return code and write the output.
